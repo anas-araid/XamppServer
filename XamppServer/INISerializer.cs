@@ -6,11 +6,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Runtime.InteropServices;
 
 namespace INISerializer
 {
     public static class INISerializer
     {
+        [DllImport("kernel32")]
+        private static extern int GetPrivateProfileString(string section,
+                 string key, string def, StringBuilder retVal,
+            int size, string filePath);
+
         public static string SerializeObject(object obj, string section = null)
         {
             return (obj == null) ? null : buildIniString(getPropertiesInfo(obj), section ?? obj.ToString());
@@ -44,6 +50,14 @@ namespace INISerializer
             }
 
             return null;
+        }
+        public static string IniReadValue(string Section, string Key, string path)
+        {
+            StringBuilder temp = new StringBuilder(255);
+            int i = GetPrivateProfileString(Section, Key, "", temp,
+                                            255, path);
+            return temp.ToString();
+
         }
         private static bool isValid(string path)
         {

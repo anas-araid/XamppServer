@@ -81,6 +81,8 @@
             this.edtProject.Name = "edtProject";
             this.edtProject.Size = new System.Drawing.Size(198, 20);
             this.edtProject.TabIndex = 5;
+            this.edtProject.Click += new System.EventHandler(this.edtProject_Click);
+            this.edtProject.TextChanged += new System.EventHandler(this.edtProject_TextChanged);
             // 
             // edtXampp
             // 
@@ -88,6 +90,7 @@
             this.edtXampp.Name = "edtXampp";
             this.edtXampp.Size = new System.Drawing.Size(198, 20);
             this.edtXampp.TabIndex = 4;
+            this.edtXampp.Click += new System.EventHandler(this.edtXampp_Click);
             // 
             // btnCarica
             // 
@@ -97,6 +100,7 @@
             this.btnCarica.TabIndex = 3;
             this.btnCarica.Text = "Carica";
             this.btnCarica.UseVisualStyleBackColor = true;
+            this.btnCarica.Click += new System.EventHandler(this.btnCarica_Click);
             // 
             // btnNuovo
             // 
@@ -136,6 +140,7 @@
             this.btnOpen.TabIndex = 0;
             this.btnOpen.Text = "Apri progetto";
             this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
             // frmServer
             // 

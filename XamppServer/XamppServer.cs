@@ -9,11 +9,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using INISerializer;
+using System.Diagnostics;
 
 namespace XamppServer
 {
     public partial class frmServer : Form
     {
+        public string configPath = "";
+        public string xamppPath = "";
+        public string projectPath = "";
+
+        public Config configurazione = new Config();
         public frmServer()
         {
             InitializeComponent();
@@ -25,7 +31,7 @@ namespace XamppServer
             String configPath = "config.ini";
             if (checkPath(configPath, 0))
             {
-                object configurazione = INISerializer.INISerializer.deserializeObject(configPath);
+                //object newConfig = INISerializer.INISerializer.deserializeObject(configPath);
             }
             else
             {
@@ -54,16 +60,130 @@ namespace XamppServer
                 MessageBox.Show("Errore: Riempire tutti i campi.");
                 return;
             }
-            if (!checkPath(projectPath, 0) && !checkPath(xamppPath, 1))
+            if (!checkPath(projectPath, 1) && !checkPath(xamppPath, 1))
             {
                 MessageBox.Show("Errore: Configurazione o xampp non trovato.");
                 return;
             }
-            
+            //Config configurazione = new Config();
+            configurazione.projectDir = projectPath;
+            configurazione.xamppDir = xamppPath;
+            grbServer.Enabled = createConfigFile(); ;
+        }
+        public bool createConfigFile()
+        {
+            try
+            {
+                var serializeConf = INISerializer.INISerializer.SerializeObject(configurazione, "config");
+                var path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)+"/config.ini";
+                
+                FileStream fileStream = File.Create(path);
+                fileStream.Close();
+                using (var tw = new StreamWriter(path, true))
+                {
+                    tw.WriteLine(serializeConf);
+
+                    //tw.WriteLine("[config]");
+                    //tw.WriteLine("xampp=" + configurazione.xamppDir);
+                    //tw.WriteLine("project=" + configurazione.projectDir);
+                }
+                
+            }
+            catch(Exception e){
+                MessageBox.Show("Errore: creazione file");
+                MessageBox.Show(e.ToString());
+                return false;
+            }
+            return true;
+        }
+        public void getDataFromConfig(string path){
+            //object loadConfig = INISerializer.INISerializer.deserializeObject(path);
+            var xamppDir = INISerializer.INISerializer.IniReadValue("config", "xamppDir", path);
+            var projectDir = INISerializer.INISerializer.IniReadValue("config", "projectDir", path);
+            if (xamppDir == "" || projectDir == "")
+            {
+                MessageBox.Show("Errore: Configurazione incompleta.");
+                return;
+            }
+            if (!checkPath(projectPath, 1) && !checkPath(xamppPath, 1))
+            {
+                MessageBox.Show("Errore configurazione: i percorsi non sono validi.");
+                return;
+            }
+            this.xamppPath = xamppDir;
+            this.projectPath = projectDir;
+            configurazione.xamppDir = xamppDir;
+            configurazione.projectDir = projectDir;
+            edtXampp.Text = configurazione.xamppDir;
+            edtProject.Text = configurazione.projectDir;
         }
         private void btnNuovo_Click(object sender, EventArgs e)
         {
             getDataFromForm();
+        }
+
+        private void btnCarica_Click(object sender, EventArgs e)
+        {
+            var dlg = new OpenFileDialog();
+            dlg.Filter = "INI File (*.ini)|*ini";
+            if (dlg.ShowDialog() != DialogResult.OK){
+                return;
+            }
+            this.configPath = dlg.FileName;
+            getDataFromConfig(configPath);
+        }
+
+        private void edtXampp_Click(object sender, EventArgs e)
+        {
+            using (var fbd = new FolderBrowserDialog()){
+                DialogResult result = fbd.ShowDialog();
+                if (result == DialogResult.OK){
+                    this.xamppPath = fbd.SelectedPath;
+                    edtXampp.Text = this.xamppPath;
+                }
+            }
+        }
+
+        private void edtProject_Click(object sender, EventArgs e)
+        {
+            using (var fbd = new FolderBrowserDialog())
+            {
+                fbd.SelectedPath = this.xamppPath;
+                DialogResult result = fbd.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    this.projectPath = fbd.SelectedPath;
+                    edtProject.Text = this.projectPath;
+                }
+            }
+        }
+
+        public void startApache()
+        {
+            var processInfo = new ProcessStartInfo("cmd.exe", "/c " + configurazione.xamppDir + "\xampp_start.exe");
+            //Do not create command propmpt window 
+            processInfo.CreateNoWindow = true;
+            //Do not use shell execution
+            processInfo.UseShellExecute = false;
+
+            //Redirects error and output of the process (command prompt).
+            processInfo.RedirectStandardError = true;
+            processInfo.RedirectStandardOutput = true;
+
+            //start a new process
+            var process = Process.Start(processInfo);
+
+            //wait until process is running
+            process.WaitForExit();
+
+            //reads output and error of command prompt to string.
+            string output = process.StandardOutput.ReadToEnd();
+            string error = process.StandardError.ReadToEnd();
+        }
+
+        private void btnOpen_Click(object sender, EventArgs e)
+        {
+            
         }
     }
     public class Config
