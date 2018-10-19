@@ -1,1 +1,9 @@
 C:\Users\Anas\Desktop\XamppServer\XamppServer\bin\Debug\XamppServer.exe.config
+C:\Users\Anas\Desktop\XamppServer\XamppServer\bin\Debug\XamppServer.exe
+C:\Users\Anas\Desktop\XamppServer\XamppServer\bin\Debug\XamppServer.pdb
+C:\Users\Anas\Desktop\XamppServer\XamppServer\obj\Debug\XamppServer.csprojResolveAssemblyReference.cache
+C:\Users\Anas\Desktop\XamppServer\XamppServer\obj\Debug\XamppServer.frmServer.resources
+C:\Users\Anas\Desktop\XamppServer\XamppServer\obj\Debug\XamppServer.Properties.Resources.resources
+C:\Users\Anas\Desktop\XamppServer\XamppServer\obj\Debug\XamppServer.csproj.GenerateResource.Cache
+C:\Users\Anas\Desktop\XamppServer\XamppServer\obj\Debug\XamppServer.exe
+C:\Users\Anas\Desktop\XamppServer\XamppServer\obj\Debug\XamppServer.pdb
