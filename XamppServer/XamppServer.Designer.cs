@@ -52,7 +52,7 @@
             this.grbConfigurazione.Controls.Add(this.btnNuovo);
             this.grbConfigurazione.Location = new System.Drawing.Point(12, 12);
             this.grbConfigurazione.Name = "grbConfigurazione";
-            this.grbConfigurazione.Size = new System.Drawing.Size(282, 119);
+            this.grbConfigurazione.Size = new System.Drawing.Size(312, 133);
             this.grbConfigurazione.TabIndex = 0;
             this.grbConfigurazione.TabStop = false;
             this.grbConfigurazione.Text = "Configurazione";
@@ -79,26 +79,25 @@
             // 
             this.edtProject.Location = new System.Drawing.Point(78, 58);
             this.edtProject.Name = "edtProject";
-            this.edtProject.Size = new System.Drawing.Size(198, 20);
+            this.edtProject.Size = new System.Drawing.Size(228, 20);
             this.edtProject.TabIndex = 5;
             this.edtProject.Click += new System.EventHandler(this.edtProject_Click);
-            this.edtProject.TextChanged += new System.EventHandler(this.edtProject_TextChanged);
             // 
             // edtXampp
             // 
             this.edtXampp.Location = new System.Drawing.Point(78, 32);
             this.edtXampp.Name = "edtXampp";
-            this.edtXampp.Size = new System.Drawing.Size(198, 20);
+            this.edtXampp.Size = new System.Drawing.Size(228, 20);
             this.edtXampp.TabIndex = 4;
             this.edtXampp.Click += new System.EventHandler(this.edtXampp_Click);
             // 
             // btnCarica
             // 
-            this.btnCarica.Location = new System.Drawing.Point(180, 84);
+            this.btnCarica.Location = new System.Drawing.Point(190, 84);
             this.btnCarica.Name = "btnCarica";
-            this.btnCarica.Size = new System.Drawing.Size(96, 23);
+            this.btnCarica.Size = new System.Drawing.Size(116, 23);
             this.btnCarica.TabIndex = 3;
-            this.btnCarica.Text = "Carica";
+            this.btnCarica.Text = "Apri configurazione";
             this.btnCarica.UseVisualStyleBackColor = true;
             this.btnCarica.Click += new System.EventHandler(this.btnCarica_Click);
             // 
@@ -106,9 +105,9 @@
             // 
             this.btnNuovo.Location = new System.Drawing.Point(78, 84);
             this.btnNuovo.Name = "btnNuovo";
-            this.btnNuovo.Size = new System.Drawing.Size(96, 23);
+            this.btnNuovo.Size = new System.Drawing.Size(110, 23);
             this.btnNuovo.TabIndex = 0;
-            this.btnNuovo.Text = "Nuovo";
+            this.btnNuovo.Text = "Crea configurazione";
             this.btnNuovo.UseVisualStyleBackColor = true;
             this.btnNuovo.Click += new System.EventHandler(this.btnNuovo_Click);
             // 
@@ -116,27 +115,28 @@
             // 
             this.grbServer.Controls.Add(this.btnClose);
             this.grbServer.Controls.Add(this.btnOpen);
-            this.grbServer.Location = new System.Drawing.Point(12, 137);
+            this.grbServer.Location = new System.Drawing.Point(12, 151);
             this.grbServer.Name = "grbServer";
-            this.grbServer.Size = new System.Drawing.Size(282, 79);
+            this.grbServer.Size = new System.Drawing.Size(312, 50);
             this.grbServer.TabIndex = 1;
             this.grbServer.TabStop = false;
             this.grbServer.Text = "Server";
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(78, 49);
+            this.btnClose.Location = new System.Drawing.Point(194, 20);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(198, 23);
+            this.btnClose.Size = new System.Drawing.Size(112, 23);
             this.btnClose.TabIndex = 1;
-            this.btnClose.Text = "Chiudi";
+            this.btnClose.Text = "Chiudi progetto";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnOpen
             // 
             this.btnOpen.Location = new System.Drawing.Point(78, 20);
             this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(198, 23);
+            this.btnOpen.Size = new System.Drawing.Size(110, 23);
             this.btnOpen.TabIndex = 0;
             this.btnOpen.Text = "Apri progetto";
             this.btnOpen.UseVisualStyleBackColor = true;
@@ -146,7 +146,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(306, 225);
+            this.ClientSize = new System.Drawing.Size(336, 211);
             this.Controls.Add(this.grbServer);
             this.Controls.Add(this.grbConfigurazione);
             this.Name = "frmServer";
