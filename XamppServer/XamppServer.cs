@@ -16,5 +16,10 @@ namespace XamppServer
         {
             InitializeComponent();
         }
+
+        private void frmServer_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
