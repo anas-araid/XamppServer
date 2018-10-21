@@ -29,10 +29,10 @@ namespace XamppServer
         private void frmServer_Load(object sender, EventArgs e)
         {
             //Config configurazione = new Config();
-            String configPath = "GestioneRapportiVVF.ini";
-            if (checkPath(configPath, 0))
+            var path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/GestioneRapportiVVF.ini";
+            if (checkPath(path, 0))
             {
-                getDataFromConfig(configPath);
+                getDataFromConfig(path);
             }
             else
             {
@@ -88,7 +88,7 @@ namespace XamppServer
                     //tw.WriteLine("xampp=" + configurazione.xamppDir);
                     //tw.WriteLine("project=" + configurazione.projectDir);
                 }
-                
+                lblPath.Text = path;                
             }
             catch(Exception e){
                 MessageBox.Show("Errore: creazione file");
@@ -116,6 +116,7 @@ namespace XamppServer
             edtXampp.Text = configurazione.xamppDir;
             edtProject.Text = configurazione.projectDir;
             grbServer.Enabled = true;
+            lblPath.Text = path;
         }
         private void btnNuovo_Click(object sender, EventArgs e)
         {
@@ -166,31 +167,29 @@ namespace XamppServer
             Process.Start(startInfo);
             System.Threading.Thread.Sleep(1500);
 
-            string m = "My Name is Pradeep and I'm 10 years old";
-            int i = m.IndexOf("and");
-            string str = m.Substring(i, m.Count());
+            string projectName = configurazione.projectDir;
+            int htdocsIndex = projectName.IndexOf("htdocs") + "htdocs".Count();
+            if (htdocsIndex == -1)
+            {
+                MessageBox.Show("Errore: progetto non trovato su xampp.");
+                return;
+            }
+            try
+            {
+                string str = projectName.Substring(htdocsIndex);
+            }
+            catch(Exception e){
+                MessageBox.Show(e.ToString());
+            }
+            //Regex rgx = new Regex(".*? htdocs");
+            //string result = rgx.Match(configurazione.projectDir).Value;
 
-            Regex rgx = new Regex(".*? htdocs");
-            string result = rgx.Match(configurazione.projectDir).Value;
-
-            //Process.Start("chrome.exe", @"localhost");
-
-
-            /*var processInfo = new ProcessStartInfo("cmd.exe", "/c " + configurazione.xamppDir + "\xampp_start.exe");
-            //Do not create command propmpt window 
-            processInfo.CreateNoWindow = false;
-            //Do not use shell execution
-            processInfo.UseShellExecute = false;
-            //Redirects error and output of the process (command prompt).
-            processInfo.RedirectStandardError = true;
-            processInfo.RedirectStandardOutput = true;
-            //start a new process
-            var process = Process.Start(processInfo);
-            //wait until process is running
-            process.WaitForExit();
-            //reads output and error of command prompt to string.
-            string output = process.StandardOutput.ReadToEnd();
-            string error = process.StandardError.ReadToEnd();*/
+            try
+            {
+                Process.Start("chrome.exe", @"localhost");
+            }catch(Exception e){
+                Process.Start("");
+            }
         }
         public void closeXampp()
         {

@@ -38,12 +38,14 @@
             this.grbServer = new System.Windows.Forms.GroupBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
+            this.lblPath = new System.Windows.Forms.Label();
             this.grbConfigurazione.SuspendLayout();
             this.grbServer.SuspendLayout();
             this.SuspendLayout();
             // 
             // grbConfigurazione
             // 
+            this.grbConfigurazione.Controls.Add(this.lblPath);
             this.grbConfigurazione.Controls.Add(this.lblProject);
             this.grbConfigurazione.Controls.Add(this.lblXampp);
             this.grbConfigurazione.Controls.Add(this.edtProject);
@@ -142,6 +144,15 @@
             this.btnOpen.UseVisualStyleBackColor = true;
             this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
+            // lblPath
+            // 
+            this.lblPath.AutoSize = true;
+            this.lblPath.ForeColor = System.Drawing.Color.DarkGreen;
+            this.lblPath.Location = new System.Drawing.Point(7, 114);
+            this.lblPath.Name = "lblPath";
+            this.lblPath.Size = new System.Drawing.Size(0, 13);
+            this.lblPath.TabIndex = 8;
+            // 
             // frmServer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -171,6 +182,7 @@
         private System.Windows.Forms.Button btnNuovo;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnOpen;
+        private System.Windows.Forms.Label lblPath;
     }
 }
 
