@@ -29,7 +29,7 @@ namespace XamppServer
         private void frmServer_Load(object sender, EventArgs e)
         {
             //Config configurazione = new Config();
-            var path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/GestioneRapportiVVF.ini";
+            var path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/configurazione.ini";
             if (checkPath(path, 0))
             {
                 getDataFromConfig(path);
@@ -76,7 +76,7 @@ namespace XamppServer
             try
             {
                 var serializeConf = INISerializer.INISerializer.SerializeObject(configurazione, "config");
-                var path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)+"/GestioneRapportiVVF.ini";
+                var path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)+"/configurazione.ini";
                 
                 FileStream fileStream = File.Create(path);
                 fileStream.Close();
@@ -125,15 +125,19 @@ namespace XamppServer
 
         private void btnCarica_Click(object sender, EventArgs e)
         {
+            openConf();
+        }
+        private void openConf()
+        {
             var dlg = new OpenFileDialog();
             dlg.Filter = "INI File (*.ini)|*ini";
-            if (dlg.ShowDialog() != DialogResult.OK){
+            if (dlg.ShowDialog() != DialogResult.OK)
+            {
                 return;
             }
             this.configPath = dlg.FileName;
             getDataFromConfig(configPath);
         }
-
         private void edtXampp_Click(object sender, EventArgs e)
         {
             using (var fbd = new FolderBrowserDialog()){
@@ -225,6 +229,36 @@ namespace XamppServer
         private void btnClose_Click(object sender, EventArgs e)
         {
             closeXampp();
+        }
+
+        private void menuNuovo_Click(object sender, EventArgs e)
+        {
+            getDataFromForm();
+        }
+
+        private void menuApri_Click(object sender, EventArgs e)
+        {
+            openConf();
+        }
+
+        private void menuEsci_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void menuAvvia_Click(object sender, EventArgs e)
+        {
+            openXampp();
+        }
+
+        private void menuChiudi_Click(object sender, EventArgs e)
+        {
+            closeXampp();
+        }
+
+        private void menuInfo_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Anas Araid Copyright 2018", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
     public class Config

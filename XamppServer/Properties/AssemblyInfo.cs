@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set di attributi. Per modificare le informazioni associate a un assembly
 // occorre quindi modificare i valori di questi attributi.
 [assembly: AssemblyTitle("XamppServer")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Xampp project launcher")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Anas Araid")]
 [assembly: AssemblyProduct("XamppServer")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
