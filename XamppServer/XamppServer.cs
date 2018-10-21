@@ -174,21 +174,23 @@ namespace XamppServer
                 MessageBox.Show("Errore: progetto non trovato su xampp.");
                 return;
             }
+            string project = "";
             try
             {
-                string str = projectName.Substring(htdocsIndex);
+                project = projectName.Substring(htdocsIndex);
             }
             catch(Exception e){
                 MessageBox.Show(e.ToString());
+                return;
             }
             //Regex rgx = new Regex(".*? htdocs");
             //string result = rgx.Match(configurazione.projectDir).Value;
 
             try
             {
-                Process.Start("chrome.exe", @"localhost");
+                Process.Start("chrome.exe", @"localhost/" + project);
             }catch(Exception e){
-                Process.Start("");
+                Process.Start(@"localhost/" + project);
             }
         }
         public void closeXampp()
