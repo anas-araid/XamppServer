@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="XamppServer.exe" size="18432">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="XamppServer.exe" size="19456">
       <assemblyIdentity name="XamppServer" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>X7VFqDCzSj8jzXXeGQ6nPgli3xbsW0m7Q8yPQr7s8hk=</dsig:DigestValue>
+        <dsig:DigestValue>xImSCEykO3XiPfiXnS1VmP7u280AouLnILD0ycZhApE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

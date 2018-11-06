@@ -10,3 +10,4 @@ C:\Users\Anas\Desktop\XamppServer\XamppServer\obj\Debug\XamppServer.exe.manifest
 C:\Users\Anas\Desktop\XamppServer\XamppServer\obj\Debug\XamppServer.application
 C:\Users\Anas\Desktop\XamppServer\XamppServer\obj\Debug\XamppServer.exe
 C:\Users\Anas\Desktop\XamppServer\XamppServer\obj\Debug\XamppServer.pdb
+C:\Users\Anas\Desktop\XamppServer\XamppServer\obj\Debug\XamppServer.csprojResolveAssemblyReference.cache

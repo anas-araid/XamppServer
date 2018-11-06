@@ -37,6 +37,8 @@ namespace XamppServer
             else
             {
                 grbServer.Enabled = false;
+                cbPredefinito.Checked = true;
+                edtPort.Enabled = false;
             }
         }
         // type 0=file 1=dir
@@ -101,7 +103,9 @@ namespace XamppServer
             //object loadConfig = INISerializer.INISerializer.deserializeObject(path);
             var xamppPath = INISerializer.INISerializer.IniReadValue("config", "xamppDir", path);
             var projectPath = INISerializer.INISerializer.IniReadValue("config", "projectDir", path);
-            if (xamppPath == "" || projectPath == "")
+            var port = INISerializer.INISerializer.IniReadValue("config", "port", path);
+
+            if (xamppPath == "" || projectPath == "" || port == "")
             {
                 MessageBox.Show("Errore: Configurazione incompleta.");
                 return;
@@ -265,5 +269,6 @@ namespace XamppServer
     {
         public string xamppDir { get; set; }
         public string projectDir { get; set; }
+        public string port{ get; set; }
     }
 }

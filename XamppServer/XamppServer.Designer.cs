@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.grbConfigurazione = new System.Windows.Forms.GroupBox();
+            this.cbPredefinito = new System.Windows.Forms.CheckBox();
+            this.lblPort = new System.Windows.Forms.Label();
+            this.edtPort = new System.Windows.Forms.TextBox();
             this.lblPath = new System.Windows.Forms.Label();
             this.lblProject = new System.Windows.Forms.Label();
             this.lblXampp = new System.Windows.Forms.Label();
@@ -41,14 +44,14 @@
             this.btnOpen = new System.Windows.Forms.Button();
             this.menu = new System.Windows.Forms.MenuStrip();
             this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuNuovo = new System.Windows.Forms.ToolStripMenuItem();
             this.menuApri = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuEsci = new System.Windows.Forms.ToolStripMenuItem();
             this.menuServer = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAvvia = new System.Windows.Forms.ToolStripMenuItem();
             this.menuChiudi = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuEsci = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.grbConfigurazione.SuspendLayout();
             this.grbServer.SuspendLayout();
             this.menu.SuspendLayout();
@@ -56,6 +59,9 @@
             // 
             // grbConfigurazione
             // 
+            this.grbConfigurazione.Controls.Add(this.cbPredefinito);
+            this.grbConfigurazione.Controls.Add(this.lblPort);
+            this.grbConfigurazione.Controls.Add(this.edtPort);
             this.grbConfigurazione.Controls.Add(this.lblPath);
             this.grbConfigurazione.Controls.Add(this.lblProject);
             this.grbConfigurazione.Controls.Add(this.lblXampp);
@@ -65,24 +71,51 @@
             this.grbConfigurazione.Controls.Add(this.btnNuovo);
             this.grbConfigurazione.Location = new System.Drawing.Point(12, 27);
             this.grbConfigurazione.Name = "grbConfigurazione";
-            this.grbConfigurazione.Size = new System.Drawing.Size(312, 133);
+            this.grbConfigurazione.Size = new System.Drawing.Size(331, 170);
             this.grbConfigurazione.TabIndex = 0;
             this.grbConfigurazione.TabStop = false;
             this.grbConfigurazione.Text = "Configurazione";
+            // 
+            // cbPredefinito
+            // 
+            this.cbPredefinito.AutoSize = true;
+            this.cbPredefinito.Location = new System.Drawing.Point(248, 61);
+            this.cbPredefinito.Name = "cbPredefinito";
+            this.cbPredefinito.Size = new System.Drawing.Size(76, 17);
+            this.cbPredefinito.TabIndex = 11;
+            this.cbPredefinito.Text = "Predefinito";
+            this.cbPredefinito.UseVisualStyleBackColor = true;
+            // 
+            // lblPort
+            // 
+            this.lblPort.AutoSize = true;
+            this.lblPort.Location = new System.Drawing.Point(7, 62);
+            this.lblPort.Name = "lblPort";
+            this.lblPort.Size = new System.Drawing.Size(72, 13);
+            this.lblPort.TabIndex = 10;
+            this.lblPort.Text = "Porta Apache";
+            // 
+            // edtPort
+            // 
+            this.edtPort.Location = new System.Drawing.Point(96, 58);
+            this.edtPort.Name = "edtPort";
+            this.edtPort.Size = new System.Drawing.Size(146, 20);
+            this.edtPort.TabIndex = 9;
             // 
             // lblPath
             // 
             this.lblPath.AutoSize = true;
             this.lblPath.ForeColor = System.Drawing.Color.DarkGreen;
-            this.lblPath.Location = new System.Drawing.Point(7, 114);
+            this.lblPath.Location = new System.Drawing.Point(6, 145);
             this.lblPath.Name = "lblPath";
-            this.lblPath.Size = new System.Drawing.Size(0, 13);
+            this.lblPath.Size = new System.Drawing.Size(162, 13);
             this.lblPath.TabIndex = 8;
+            this.lblPath.Text = "Nessuna configurazione caricata";
             // 
             // lblProject
             // 
             this.lblProject.AutoSize = true;
-            this.lblProject.Location = new System.Drawing.Point(7, 61);
+            this.lblProject.Location = new System.Drawing.Point(6, 87);
             this.lblProject.Name = "lblProject";
             this.lblProject.Size = new System.Drawing.Size(47, 13);
             this.lblProject.TabIndex = 7;
@@ -91,7 +124,7 @@
             // lblXampp
             // 
             this.lblXampp.AutoSize = true;
-            this.lblXampp.Location = new System.Drawing.Point(7, 32);
+            this.lblXampp.Location = new System.Drawing.Point(7, 35);
             this.lblXampp.Name = "lblXampp";
             this.lblXampp.Size = new System.Drawing.Size(40, 13);
             this.lblXampp.TabIndex = 6;
@@ -99,7 +132,7 @@
             // 
             // edtProject
             // 
-            this.edtProject.Location = new System.Drawing.Point(78, 58);
+            this.edtProject.Location = new System.Drawing.Point(96, 84);
             this.edtProject.Name = "edtProject";
             this.edtProject.Size = new System.Drawing.Size(228, 20);
             this.edtProject.TabIndex = 5;
@@ -107,7 +140,7 @@
             // 
             // edtXampp
             // 
-            this.edtXampp.Location = new System.Drawing.Point(78, 32);
+            this.edtXampp.Location = new System.Drawing.Point(96, 32);
             this.edtXampp.Name = "edtXampp";
             this.edtXampp.Size = new System.Drawing.Size(228, 20);
             this.edtXampp.TabIndex = 4;
@@ -115,7 +148,7 @@
             // 
             // btnCarica
             // 
-            this.btnCarica.Location = new System.Drawing.Point(190, 84);
+            this.btnCarica.Location = new System.Drawing.Point(208, 110);
             this.btnCarica.Name = "btnCarica";
             this.btnCarica.Size = new System.Drawing.Size(116, 23);
             this.btnCarica.TabIndex = 3;
@@ -125,7 +158,7 @@
             // 
             // btnNuovo
             // 
-            this.btnNuovo.Location = new System.Drawing.Point(78, 84);
+            this.btnNuovo.Location = new System.Drawing.Point(96, 110);
             this.btnNuovo.Name = "btnNuovo";
             this.btnNuovo.Size = new System.Drawing.Size(110, 23);
             this.btnNuovo.TabIndex = 0;
@@ -137,16 +170,16 @@
             // 
             this.grbServer.Controls.Add(this.btnClose);
             this.grbServer.Controls.Add(this.btnOpen);
-            this.grbServer.Location = new System.Drawing.Point(12, 166);
+            this.grbServer.Location = new System.Drawing.Point(12, 203);
             this.grbServer.Name = "grbServer";
-            this.grbServer.Size = new System.Drawing.Size(312, 50);
+            this.grbServer.Size = new System.Drawing.Size(331, 50);
             this.grbServer.TabIndex = 1;
             this.grbServer.TabStop = false;
             this.grbServer.Text = "Server";
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(194, 20);
+            this.btnClose.Location = new System.Drawing.Point(212, 19);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(112, 23);
             this.btnClose.TabIndex = 1;
@@ -156,7 +189,7 @@
             // 
             // btnOpen
             // 
-            this.btnOpen.Location = new System.Drawing.Point(78, 20);
+            this.btnOpen.Location = new System.Drawing.Point(96, 19);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(110, 23);
             this.btnOpen.TabIndex = 0;
@@ -172,7 +205,7 @@
             this.menuHelp});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(336, 24);
+            this.menu.Size = new System.Drawing.Size(348, 24);
             this.menu.TabIndex = 2;
             this.menu.Text = "menu";
             // 
@@ -186,34 +219,26 @@
             this.menuFile.Size = new System.Drawing.Size(37, 20);
             this.menuFile.Text = "File";
             // 
-            // menuHelp
-            // 
-            this.menuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuInfo});
-            this.menuHelp.Name = "menuHelp";
-            this.menuHelp.Size = new System.Drawing.Size(24, 20);
-            this.menuHelp.Text = "?";
-            // 
             // menuNuovo
             // 
             this.menuNuovo.Name = "menuNuovo";
-            this.menuNuovo.Size = new System.Drawing.Size(152, 22);
+            this.menuNuovo.Size = new System.Drawing.Size(110, 22);
             this.menuNuovo.Text = "Nuovo";
             this.menuNuovo.Click += new System.EventHandler(this.menuNuovo_Click);
             // 
             // menuApri
             // 
             this.menuApri.Name = "menuApri";
-            this.menuApri.Size = new System.Drawing.Size(152, 22);
+            this.menuApri.Size = new System.Drawing.Size(110, 22);
             this.menuApri.Text = "Apri";
             this.menuApri.Click += new System.EventHandler(this.menuApri_Click);
             // 
-            // menuInfo
+            // menuEsci
             // 
-            this.menuInfo.Name = "menuInfo";
-            this.menuInfo.Size = new System.Drawing.Size(152, 22);
-            this.menuInfo.Text = "Info";
-            this.menuInfo.Click += new System.EventHandler(this.menuInfo_Click);
+            this.menuEsci.Name = "menuEsci";
+            this.menuEsci.Size = new System.Drawing.Size(110, 22);
+            this.menuEsci.Text = "Esci";
+            this.menuEsci.Click += new System.EventHandler(this.menuEsci_Click);
             // 
             // menuServer
             // 
@@ -227,29 +252,37 @@
             // menuAvvia
             // 
             this.menuAvvia.Name = "menuAvvia";
-            this.menuAvvia.Size = new System.Drawing.Size(152, 22);
+            this.menuAvvia.Size = new System.Drawing.Size(109, 22);
             this.menuAvvia.Text = "Avvia";
             this.menuAvvia.Click += new System.EventHandler(this.menuAvvia_Click);
             // 
             // menuChiudi
             // 
             this.menuChiudi.Name = "menuChiudi";
-            this.menuChiudi.Size = new System.Drawing.Size(152, 22);
+            this.menuChiudi.Size = new System.Drawing.Size(109, 22);
             this.menuChiudi.Text = "Chiudi";
             this.menuChiudi.Click += new System.EventHandler(this.menuChiudi_Click);
             // 
-            // menuEsci
+            // menuHelp
             // 
-            this.menuEsci.Name = "menuEsci";
-            this.menuEsci.Size = new System.Drawing.Size(152, 22);
-            this.menuEsci.Text = "Esci";
-            this.menuEsci.Click += new System.EventHandler(this.menuEsci_Click);
+            this.menuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuInfo});
+            this.menuHelp.Name = "menuHelp";
+            this.menuHelp.Size = new System.Drawing.Size(24, 20);
+            this.menuHelp.Text = "?";
+            // 
+            // menuInfo
+            // 
+            this.menuInfo.Name = "menuInfo";
+            this.menuInfo.Size = new System.Drawing.Size(95, 22);
+            this.menuInfo.Text = "Info";
+            this.menuInfo.Click += new System.EventHandler(this.menuInfo_Click);
             // 
             // frmServer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(336, 221);
+            this.ClientSize = new System.Drawing.Size(348, 258);
             this.Controls.Add(this.grbServer);
             this.Controls.Add(this.grbConfigurazione);
             this.Controls.Add(this.menu);
@@ -293,6 +326,9 @@
         private System.Windows.Forms.ToolStripMenuItem menuServer;
         private System.Windows.Forms.ToolStripMenuItem menuAvvia;
         private System.Windows.Forms.ToolStripMenuItem menuChiudi;
+        private System.Windows.Forms.Label lblPort;
+        private System.Windows.Forms.TextBox edtPort;
+        private System.Windows.Forms.CheckBox cbPredefinito;
     }
 }
 
