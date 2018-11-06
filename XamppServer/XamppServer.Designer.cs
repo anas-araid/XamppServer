@@ -85,6 +85,7 @@
             this.cbPredefinito.TabIndex = 11;
             this.cbPredefinito.Text = "Predefinito";
             this.cbPredefinito.UseVisualStyleBackColor = true;
+            this.cbPredefinito.Click += new System.EventHandler(this.cbPredefinito_Click);
             // 
             // lblPort
             // 

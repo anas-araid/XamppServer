@@ -19,6 +19,7 @@ namespace XamppServer
         public string configPath = "";
         public string xamppPath = "";
         public string projectPath = "";
+        public bool predefinito = false;
 
         public Config configurazione = new Config();
         public frmServer()
@@ -59,6 +60,21 @@ namespace XamppServer
         {
             String xamppPath = edtXampp.Text;
             String projectPath = edtProject.Text;
+            int port;
+           
+            if (!cbPredefinito.Checked)
+            {
+                if (!int.TryParse(edtPort.Text, out port))
+                {
+                    MessageBox.Show("Errore: il valore della porta di rete deve essere un numero");
+                    return;
+                }
+            }
+            else
+            {
+                port = 80;
+            }
+           
             if (xamppPath == "" || projectPath == ""){
                 MessageBox.Show("Errore: Riempire tutti i campi.");
                 return;
@@ -71,6 +87,7 @@ namespace XamppServer
             //Config configurazione = new Config();
             configurazione.projectDir = projectPath;
             configurazione.xamppDir = xamppPath;
+            configurazione.port = port;
             grbServer.Enabled = createConfigFile(); ;
         }
         public bool createConfigFile()
@@ -117,8 +134,12 @@ namespace XamppServer
             }
             configurazione.xamppDir = xamppPath;
             configurazione.projectDir = projectPath;
+            configurazione.port= Convert.ToInt32(port);
+
             edtXampp.Text = configurazione.xamppDir;
             edtProject.Text = configurazione.projectDir;
+            edtPort.Text = configurazione.port.ToString();
+
             grbServer.Enabled = true;
             lblPath.Text = path;
         }
@@ -193,12 +214,12 @@ namespace XamppServer
             }
             //Regex rgx = new Regex(".*? htdocs");
             //string result = rgx.Match(configurazione.projectDir).Value;
-
+            //@"localhost:" + configurazione.port + "/" + project
             try
             {
-                Process.Start("chrome.exe", @"localhost/" + project);
+                Process.Start("chrome.exe", @"127.0.0.1:" + configurazione.port + "/" + project);
             }catch(Exception e){
-                Process.Start(@"localhost/" + project);
+                Process.Start(@"127.0.0.1:" + configurazione.port + "/" + project);
             }
         }
         public void closeXampp()
@@ -264,11 +285,17 @@ namespace XamppServer
         {
             MessageBox.Show("Anas Araid Copyright 2018", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void cbPredefinito_Click(object sender, EventArgs e)
+        {
+            edtPort.Enabled = this.predefinito;
+            this.predefinito = !edtPort.Enabled;
+        }
     }
     public class Config
     {
         public string xamppDir { get; set; }
         public string projectDir { get; set; }
-        public string port{ get; set; }
+        public int port{ get; set; }
     }
 }
