@@ -112,6 +112,7 @@
             this.lblPath.Size = new System.Drawing.Size(162, 13);
             this.lblPath.TabIndex = 8;
             this.lblPath.Text = "Nessuna configurazione caricata";
+            this.lblPath.DoubleClick += new System.EventHandler(this.lblPath_DoubleClick);
             // 
             // lblProject
             // 

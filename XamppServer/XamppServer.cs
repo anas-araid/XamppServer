@@ -20,6 +20,7 @@ namespace XamppServer
         public string xamppPath = "";
         public string projectPath = "";
         public bool predefinito = false;
+        public bool configLoaded = false;
 
         public Config configurazione = new Config();
         public frmServer()
@@ -33,6 +34,7 @@ namespace XamppServer
             var path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/configurazione.ini";
             if (checkPath(path, 0))
             {
+                this.configPath = path;
                 getDataFromConfig(path);
             }
             else
@@ -107,7 +109,8 @@ namespace XamppServer
                     //tw.WriteLine("xampp=" + configurazione.xamppDir);
                     //tw.WriteLine("project=" + configurazione.projectDir);
                 }
-                lblPath.Text = path;                
+                lblPath.Text = path;
+                configPath = path;
             }
             catch(Exception e){
                 MessageBox.Show("Errore: creazione file");
@@ -141,6 +144,7 @@ namespace XamppServer
             edtPort.Text = configurazione.port.ToString();
 
             grbServer.Enabled = true;
+            configLoaded = true;
             lblPath.Text = path;
         }
         private void btnNuovo_Click(object sender, EventArgs e)
@@ -290,6 +294,15 @@ namespace XamppServer
         {
             edtPort.Enabled = this.predefinito;
             this.predefinito = !edtPort.Enabled;
+        }
+
+        private void lblPath_DoubleClick(object sender, EventArgs e)
+        {
+            if (!configLoaded)
+            {
+                return;
+            }
+            Process.Start("notepad.exe", this.configPath);
         }
     }
     public class Config
