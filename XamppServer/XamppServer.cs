@@ -292,8 +292,8 @@ namespace XamppServer
 
         private void cbPredefinito_Click(object sender, EventArgs e)
         {
-            edtPort.Enabled = this.predefinito;
             this.predefinito = !edtPort.Enabled;
+            edtPort.Enabled = this.predefinito;
         }
 
         private void lblPath_DoubleClick(object sender, EventArgs e)
